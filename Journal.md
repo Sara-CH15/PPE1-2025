@@ -110,3 +110,24 @@ fi
 echo "$OK URLs et $NOK lignes douteuses"
 - À la fin il dit combien d'URLs valides et invalides il a trouvées.
 
+## Mini-projet 1 : Collecte d'URLs
+
+#### Exercice 1 - Question 1 : Pourquoi ne pas utiliser cat ?
+
+- Nous utilisons une boucle `while read` plutôt que la commande `cat` pour plusieurs raisons :
+
+1. **Traitement ligne par ligne** : `cat` affiche tout le contenu d'un fichier en une seule fois, sans possibilité de traiter chaque ligne individuellement. Avec `while read`, nous pouvons traiter chaque URL une par une.
+
+2. **Ajout d'informations** : Notre script doit ajouter des métadonnées pour chaque URL (numéro de ligne, code HTTP, encodage, nombre de mots). Cela nécessite de traiter chaque ligne séparément.
+
+3. **Construction du tableau** : La boucle `while read` nous permet de construire progressivement notre tableau TSV en ajoutant les colonnes nécessaires pour chaque URL.
+
+- En résumé, `cat` sert à afficher un fichier, tandis que `while read` permet de traiter et transformer les données ligne par ligne.
+
+#### Script réalisé
+
+Le script `miniprojet.sh` permet de :
+- Lire un fichier d'URLs passé en paramètre
+- Valider que le fichier existe
+- Pour chaque URL, récupérer : le code HTTP, l'encodage, et le nombre de mots
+- Générer un tableau au format TSV avec toutes ces informations
