@@ -1,0 +1,4 @@
+NUMERO	URL	CODE_HTTP	ENCODAGE	NB_MOTS
+1	https://www.perdu.com	200	N/A	16
+2	https://fr.wikipedia.org/wiki/Chat	200	UTF-8	24257
+3	https://www.lemonde.fr	200	UTF-8	3437
