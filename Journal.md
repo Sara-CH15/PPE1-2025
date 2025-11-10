@@ -131,3 +131,22 @@ Le script `miniprojet.sh` permet de :
 - Valider que le fichier existe
 - Pour chaque URL, récupérer : le code HTTP, l'encodage, et le nombre de mots
 - Générer un tableau au format TSV avec toutes ces informations
+## Mini-projet 2 : Transformation en HTML
+
+### Objectif
+Transformer la sortie tabulaire TSV en tableau HTML pour une visualisation dans un navigateur web.
+
+### Travail réalisé
+- Modification du script `miniprojet.sh` pour générer du HTML au lieu de TSV
+- Ajout de la structure HTML complète (DOCTYPE, head, body)
+- Création d'un tableau HTML avec :
+  - En-tête avec les colonnes : Numéro, URL, Code HTTP, Encodage, Nombre de mots
+  - Une ligne par URL analysée
+- Suppression du fichier TSV du dépôt
+- Le fichier généré est `tableau-fr.html` et peut être ouvert dans n'importe quel navigateur
+
+### Changements par rapport au mini-projet 1
+- Remplacement de `echo -e "...\t..."` par des balises HTML `<tr>`, `<td>`
+- Ajout de l'en-tête HTML avec charset UTF-8
+- Ajout d'un titre H1 pour le tableau
+- Attribut `border="1"` pour visualiser les bordures du tableau
