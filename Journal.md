@@ -150,3 +150,22 @@ Transformer la sortie tabulaire TSV en tableau HTML pour une visualisation dans 
 - Ajout de l'en-tête HTML avec charset UTF-8
 - Ajout d'un titre H1 pour le tableau
 - Attribut `border="1"` pour visualiser les bordures du tableau
+## Mini-projet 3 : Création d'un site GitHub Pages
+
+### Objectif
+Créer un site web avec une page d'accueil et publier le projet sur GitHub Pages.
+
+### Travail réalisé
+- Création d'une page d'accueil `index.html` à la racine du dépôt
+- Présentation du projet avec description claire
+- Lien vers le tableau des résultats
+- Amélioration du tableau HTML avec style personnalisé
+- Déploiement du site sur GitHub Pages
+- Résolution de problèmes techniques (submodule Git)
+
+### Site web
+Le site est accessible à : https://Sara-CH15.github.io/PPE1-2025
+
+### Difficultés rencontrées
+- Erreur de submodule Git (dossier PPE1-2025 dans PPE1-2025)
+- Solution : suppression du dossier en double avec `git rm`
