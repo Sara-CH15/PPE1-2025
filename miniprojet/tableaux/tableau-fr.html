@@ -1,89 +1,229 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau des URLs - Projet Robot</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <style>
+        :root {
+            --rose-pastel: #f7d8d8;
+            --nude: #f5e6e0;
+            --rose-clair: #ffeef2;
+            --beige: #f9f5f0;
+            --gris-doux: #8b7b7b;
+            --vert-pastel: #e8f5e9;
+            --jaune-pastel: #fff9e6;
+            --rouge-pastel: #ffeaea;
+        }
+        
+        body {
+            background-color: var(--beige);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--nude) 0%, var(--rose-pastel) 100%);
+            border-bottom: 1px solid rgba(139, 123, 123, 0.1);
+        }
+        
+        .hero .title, .hero .subtitle {
+            color: var(--gris-doux);
+            font-weight: 300;
+        }
+        
+        .button.is-custom {
+            background-color: var(--rose-pastel);
+            color: var(--gris-doux);
+            border: none;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+        
+        .button.is-custom:hover {
+            background-color: #f0c4c4;
+            transform: translateY(-2px);
+        }
+        
+        .table-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(247, 216, 216, 0.15);
+        }
+        
+        .table {
+            background-color: transparent;
+        }
+        
+        .table thead th {
+            background-color: var(--rose-pastel);
+            color: var(--gris-doux);
+            border: none;
+            font-weight: 400;
+            letter-spacing: 1px;
+            padding: 1rem;
+        }
+        
+        .table tbody tr {
+            border-bottom: 1px solid var(--rose-clair);
+            transition: background-color 0.2s ease;
+        }
+        
+        .table tbody tr:hover {
+            background-color: var(--rose-clair);
+        }
+        
+        .table td {
+            padding: 1rem;
+            color: var(--gris-doux);
+            border: none;
+        }
+        
+        .status-success {
+            background-color: var(--vert-pastel);
+        }
+        
+        .status-warning {
+            background-color: var(--jaune-pastel);
+        }
+        
+        .status-error {
+            background-color: var(--rouge-pastel);
+        }
+        
+        .tag.is-custom {
+            background-color: var(--rose-pastel);
+            color: var(--gris-doux);
+            border: 1px solid var(--rose-pastel);
+            font-weight: 400;
+        }
+        
+        .footer {
+            background-color: var(--nude);
+            color: var(--gris-doux);
+            border-top: 1px solid var(--rose-pastel);
+        }
+        
+        a {
+            color: var(--gris-doux);
+            text-decoration: underline;
+            text-decoration-color: var(--rose-pastel);
+        }
+        
+        a:hover {
+            color: #6b5b5b;
+        }
+    </style>
 </head>
 <body>
-    <h1>Tableau des URLs analysées</h1>
-    <table border="1">
-        <tr>
-            <th>Numéro</th>
-            <th>URL</th>
-            <th>Code HTTP</th>
-            <th>Encodage</th>
-            <th>Nombre de mots</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>https://fr.wikipedia.org/wiki/Robot</td>
-            <td>200</td>
-            <td>UTF-8</td>
-            <td>5681</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>https://fr.wikipedia.org/wiki/Robot_de_cuisine</td>
-            <td>200</td>
-            <td>UTF-8</td>
-            <td>1161</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>fr.wikipedia.org/wiki/Robot_d%27indexation</td>
-            <td>200</td>
-            <td>UTF-8</td>
-            <td>1765</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>https://fr.wikipedia.org/wiki/Bot_informatique</td>
-            <td>200</td>
-            <td>UTF-8</td>
-            <td>2583</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>https://fr.wikipedia.org/wiki/Atlas_(robot)</td>
-            <td>200</td>
-            <td>UTF-8</td>
-            <td>1167</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>https://roboty.magistry.fr</td>
-            <td>000</td>
-            <td>N/A</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>https://fr.wikipedia.org/wiki/Robot_(Leonard_de_Vinci)</td>
-            <td>404</td>
-            <td>utf-8</td>
-            <td>440</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>https://fr.wiktionary.org/wiki/robot</td>
-            <td>200</td>
-            <td>utf-8</td>
-            <td>4813</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>https://fr.wikipedia.org/wiki/Protocole_d%27exclusion_des_robots</td>
-            <td>429</td>
-            <td>utf-8</td>
-            <td>1139</td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>https://fr.wikipedia.org/wiki/Robotique</td>
-            <td>200</td>
-            <td>utf-8</td>
-            <td>13025</td>
-        </tr>
-    </table>
+    <section class="hero is-medium">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title is-2">Tableau d'analyse</h1>
+                <p class="subtitle is-5">URLs sur le thème des robots</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="mb-4">
+                <a href="../../index.html" class="button is-custom">← Retour à l'accueil</a>
+            </div>
+            
+            <div class="table-container">
+                <table class="table is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>URL</th>
+                            <th>HTTP</th>
+                            <th>Encodage</th>
+                            <th>Mots</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="status-success">
+                            <td><strong>1</strong></td>
+                            <td><a href="https://fr.wikipedia.org/wiki/Robot" target="_blank">https://fr.wikipedia.org/wiki/Robot</a></td>
+                            <td><span class="tag is-custom">200</span></td>
+                            <td>UTF-8</td>
+                            <td>5681</td>
+                        </tr>
+                        <tr class="status-success">
+                            <td><strong>2</strong></td>
+                            <td><a href="https://fr.wikipedia.org/wiki/Robot_de_cuisine" target="_blank">https://fr.wikipedia.org/wiki/Robot_de_cuisine</a></td>
+                            <td><span class="tag is-custom">200</span></td>
+                            <td>UTF-8</td>
+                            <td>1161</td>
+                        </tr>
+                        <tr class="status-success">
+                            <td><strong>3</strong></td>
+                            <td><a href="fr.wikipedia.org/wiki/Robot_d%27indexation" target="_blank">fr.wikipedia.org/wiki/Robot_d%27indexation</a></td>
+                            <td><span class="tag is-custom">200</span></td>
+                            <td>UTF-8</td>
+                            <td>1765</td>
+                        </tr>
+                        <tr class="status-success">
+                            <td><strong>4</strong></td>
+                            <td><a href="https://fr.wikipedia.org/wiki/Bot_informatique" target="_blank">https://fr.wikipedia.org/wiki/Bot_informatique</a></td>
+                            <td><span class="tag is-custom">200</span></td>
+                            <td>UTF-8</td>
+                            <td>2583</td>
+                        </tr>
+                        <tr class="status-success">
+                            <td><strong>5</strong></td>
+                            <td><a href="https://fr.wikipedia.org/wiki/Atlas_(robot)" target="_blank">https://fr.wikipedia.org/wiki/Atlas_(robot)</a></td>
+                            <td><span class="tag is-custom">200</span></td>
+                            <td>UTF-8</td>
+                            <td>1167</td>
+                        </tr>
+                        <tr class="status-error">
+                            <td><strong>6</strong></td>
+                            <td><a href="https://roboty.magistry.fr" target="_blank">https://roboty.magistry.fr</a></td>
+                            <td><span class="tag is-custom">000</span></td>
+                            <td>N/A</td>
+                            <td>0</td>
+                        </tr>
+                        <tr class="status-warning">
+                            <td><strong>7</strong></td>
+                            <td><a href="https://fr.wikipedia.org/wiki/Robot_(Leonard_de_Vinci)" target="_blank">https://fr.wikipedia.org/wiki/Robot_(Leonard_de_Vinci)</a></td>
+                            <td><span class="tag is-custom">404</span></td>
+                            <td>utf-8</td>
+                            <td>440</td>
+                        </tr>
+                        <tr class="status-error">
+                            <td><strong>8</strong></td>
+                            <td><a href="https://fr.wiktionary.org/wiki/robot" target="_blank">https://fr.wiktionary.org/wiki/robot</a></td>
+                            <td><span class="tag is-custom">429</span></td>
+                            <td>utf-8</td>
+                            <td>4813</td>
+                        </tr>
+                        <tr class="status-success">
+                            <td><strong>9</strong></td>
+                            <td><a href="https://fr.wikipedia.org/wiki/Protocole_d%27exclusion_des_robots" target="_blank">https://fr.wikipedia.org/wiki/Protocole_d%27exclusion_des_robots</a></td>
+                            <td><span class="tag is-custom">200</span></td>
+                            <td>utf-8</td>
+                            <td>1139</td>
+                        </tr>
+                        <tr class="status-error">
+                            <td><strong>10</strong></td>
+                            <td><a href="https://fr.wikipedia.org/wiki/Robotique" target="_blank">https://fr.wikipedia.org/wiki/Robotique</a></td>
+                            <td><span class="tag is-custom">429</span></td>
+                            <td>utf-8</td>
+                            <td>13025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p style="margin: 0;">Mini-projet PPE1 · Sara CHALABI · 2024-2025</p>
+        </div>
+    </footer>
 </body>
 </html>
