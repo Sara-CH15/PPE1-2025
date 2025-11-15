@@ -1,220 +1,80 @@
-#!/bin/bash
-
-# Vérifier qu'on a un argument
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <fichier_urls>" >&2
-    exit 1
-fi
-
-FICHIER_URLS=$1
-
-# Vérifier que le fichier existe
-if [ ! -f "$FICHIER_URLS" ]; then
-    echo "Erreur: le fichier $FICHIER_URLS n'existe pas" >&2
-    exit 1
-fi
-
-# Début du document HTML avec style pastel
-cat << 'EOF'
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau des URLs - Projet Robot</title>
+    <title>Mini-projet PPE1 - Analyse d'URLs sur les robots</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
-    <style>
-        :root {
-            --rose-pastel: #f7d8d8;
-            --nude: #f5e6e0;
-            --rose-clair: #ffeef2;
-            --beige: #f9f5f0;
-            --gris-doux: #8b7b7b;
-            --vert-pastel: #e8f5e9;
-            --jaune-pastel: #fff9e6;
-            --rouge-pastel: #ffeaea;
-        }
-        
-        body {
-            background-color: var(--beige);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .hero {
-            background: linear-gradient(135deg, var(--nude) 0%, var(--rose-pastel) 100%);
-            border-bottom: 1px solid rgba(139, 123, 123, 0.1);
-        }
-        
-        .hero .title, .hero .subtitle {
-            color: var(--gris-doux);
-            font-weight: 300;
-        }
-        
-        .button.is-custom {
-            background-color: var(--rose-pastel);
-            color: var(--gris-doux);
-            border: none;
-            font-weight: 400;
-            transition: all 0.3s ease;
-        }
-        
-        .button.is-custom:hover {
-            background-color: #f0c4c4;
-            transform: translateY(-2px);
-        }
-        
-        .table-container {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 8px rgba(247, 216, 216, 0.15);
-        }
-        
-        .table {
-            background-color: transparent;
-        }
-        
-        .table thead th {
-            background-color: var(--rose-pastel);
-            color: var(--gris-doux);
-            border: none;
-            font-weight: 400;
-            letter-spacing: 1px;
-            padding: 1rem;
-        }
-        
-        .table tbody tr {
-            border-bottom: 1px solid var(--rose-clair);
-            transition: background-color 0.2s ease;
-        }
-        
-        .table tbody tr:hover {
-            background-color: var(--rose-clair);
-        }
-        
-        .table td {
-            padding: 1rem;
-            color: var(--gris-doux);
-            border: none;
-        }
-        
-        .status-success {
-            background-color: var(--vert-pastel);
-        }
-        
-        .status-warning {
-            background-color: var(--jaune-pastel);
-        }
-        
-        .status-error {
-            background-color: var(--rouge-pastel);
-        }
-        
-        .tag.is-custom {
-            background-color: var(--rose-pastel);
-            color: var(--gris-doux);
-            border: 1px solid var(--rose-pastel);
-            font-weight: 400;
-        }
-        
-        .footer {
-            background-color: var(--nude);
-            color: var(--gris-doux);
-            border-top: 1px solid var(--rose-pastel);
-        }
-        
-        a {
-            color: var(--gris-doux);
-            text-decoration: underline;
-            text-decoration-color: var(--rose-pastel);
-        }
-        
-        a:hover {
-            color: #6b5b5b;
-        }
-    </style>
 </head>
 <body>
-    <section class="hero is-medium">
+    <section class="hero is-primary">
         <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title is-2">Tableau d'analyse</h1>
-                <p class="subtitle is-5">URLs sur le thème des robots</p>
+            <div class="container">
+                <h1 class="title">Mini-projet PPE1</h1>
+                <h2 class="subtitle">Analyse automatique d'URLs sur le thème des robots</h2>
             </div>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
-            <div class="mb-4">
-                <a href="../../index.html" class="button is-custom">← Retour à l'accueil</a>
-            </div>
-            
-            <div class="table-container">
-                <table class="table is-fullwidth">
-                    <thead>
-                        <tr>
-                            <th>N°</th>
-                            <th>URL</th>
-                            <th>HTTP</th>
-                            <th>Encodage</th>
-                            <th>Mots</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-EOF
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <h2 class="title is-3">Présentation du projet</h2>
+                        
+                        <div class="box">
+                            <h3 class="title is-5">Objectif</h3>
+                            <p>
+                                Ce mini-projet a pour but de collecter et analyser automatiquement des pages web 
+                                à partir d'une liste d'URLs sur le thème des <strong>robots</strong>.
+                            </p>
+                        </div>
 
-NUMERO_LIGNE=1
+                        <div class="box">
+                            <h3 class="title is-5">Métadonnées collectées</h3>
+                            <p>Pour chaque URL, nous récupérons :</p>
+                            <ul>
+                                <li><strong>Code HTTP</strong> : statut de la réponse (200, 404, etc.)</li>
+                                <li><strong>Encodage</strong> : charset de la page (UTF-8, etc.)</li>
+                                <li><strong>Nombre de mots</strong> : contenu textuel de la page</li>
+                            </ul>
+                        </div>
 
-while read -r URL;
-do
-    # Récupérer le code HTTP
-    HTTP_CODE=$(curl -I -L -s -o /dev/null -w "%{http_code}" "$URL")
-    
-    # Récupérer l'encodage
-    ENCODAGE=$(curl -I -L -s "$URL" | grep -i "content-type" | grep -o "charset=[^;]*" | cut -d= -f2 | tr -d '\r\n' | head -n 1)
-    
-    # Si pas d'encodage trouvé, mettre "N/A"
-    if [ -z "$ENCODAGE" ]; then
-        ENCODAGE="N/A"
-    fi
-    
-    # Compter les mots
-    NB_MOTS=$(lynx -dump -nolist "$URL" 2>/dev/null | wc -w)
-    
-    # Choisir la classe CSS selon le code HTTP
-    if [ "$HTTP_CODE" = "200" ]; then
-        TR_CLASS="status-success"
-    elif [ "$HTTP_CODE" = "404" ]; then
-        TR_CLASS="status-warning"
-    else
-        TR_CLASS="status-error"
-    fi
-    
-    # Afficher une ligne du tableau HTML
-    echo "                        <tr class=\"${TR_CLASS}\">"
-    echo "                            <td><strong>${NUMERO_LIGNE}</strong></td>"
-    echo "                            <td><a href=\"${URL}\" target=\"_blank\">${URL}</a></td>"
-    echo "                            <td><span class=\"tag is-custom\">${HTTP_CODE}</span></td>"
-    echo "                            <td>${ENCODAGE}</td>"
-    echo "                            <td>${NB_MOTS}</td>"
-    echo "                        </tr>"
-    
-    NUMERO_LIGNE=$((NUMERO_LIGNE + 1))
-    
-done < "$FICHIER_URLS"
+                        <div class="box">
+                            <h3 class="title is-5">Outils utilisés</h3>
+                            <ul>
+                                <li><strong>Bash</strong> : langage de script</li>
+                                <li><strong>cURL</strong> : récupération des en-têtes HTTP</li>
+                                <li><strong>Lynx</strong> : extraction du contenu textuel</li>
+                                <li><strong>HTML/CSS</strong> : présentation des résultats</li>
+                                <li><strong>Bulma CSS</strong> : framework de style</li>
+                            </ul>
+                        </div>
 
-# Fin du document HTML
-cat << 'EOF'
-                    </tbody>
-                </table>
+                        <div class="notification is-info is-light">
+                            <strong>Auteur :</strong> Sara CHALABI<br>
+                            <strong>Cours :</strong> Programmation et Projet Encadré (PPE1)<br>
+                            <strong>Année :</strong> 2024-2025
+                        </div>
+
+                        <div class="buttons is-centered mt-5">
+                            <a href="miniprojet/tableaux/tableau-fr.html" class="button is-primary is-large">
+                                <strong>Voir le tableau des résultats</strong>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
         <div class="content has-text-centered">
-            <p style="margin: 0;">Mini-projet PPE1 · Sara CHALABI · 2024-2025</p>
+            <p>
+                <strong>Mini-projet PPE1</strong> par Sara CHALABI<br>
+                Université Sorbonne-Nouvelle - 2024-2025
+            </p>
         </div>
     </footer>
 </body>
