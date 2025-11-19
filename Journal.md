@@ -169,3 +169,38 @@ Le site est accessible à : https://Sara-CH15.github.io/PPE1-2025
 ### Difficultés rencontrées
 - Erreur de submodule Git (dossier PPE1-2025 dans PPE1-2025)
 - Solution : suppression du dossier en double avec `git rm`
+# Gestion des conflits Git
+
+**Date :** 19 novembre 2025
+**Séance :** Exercices Git
+
+## Exercices réalisés
+### Exercice 1 : Préparation
+- Nettoyage du dépôt avec git checkout . pour annuler toutes les modifications non commitées
+- Préparation d'un dépôt propre pour les exercices
+
+### Exercice 2 : Création d'un README
+- Génération de texte lorem ipsum sur lipsum.com
+- Ajout du contenu dans README.md avec nano
+- Commandes : git add README.md, git commit, git push
+- Premier push réussi
+### Exercice 3 : Simulation d'un conflit
+- Modification via GitHub : suppression du premier paragraphe
+- Modification locale : ajout d'une ligne
+- Erreur de push (rejected)
+
+### Exercice 4 : Résolution du conflit
+1. git fetch et git reset HEAD~1 : annulation du commit local
+2. git stash : mise de côté des modifications
+3. git pull : récupération des modifications distantes
+4. git stash pop : réapplication des modifications
+5. git push : push réussi
+
+## Commandes apprises
+- git reset HEAD~1 : annule le commit en gardant les modifications
+- git stash : met de côté les modifications
+- git stash pop : réapplique les modifications
+
+## Résultat
+ Conflit résolu avec succès
+
